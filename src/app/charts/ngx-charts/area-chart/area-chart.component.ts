@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild, OnInit  } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { single, multi } from './data';
 @Component({
   selector: 'cdk-area-chart',
@@ -7,7 +7,7 @@ import { single, multi } from './data';
 })
 export class AreaChartComponent implements OnInit {
 
-  @ViewChild('ele') el:ElementRef;
+  @ViewChild('ele', { static: false }) el: ElementRef;
   public showYAxisLabel;
   public showYAxis;
   public showXAxis;
@@ -15,37 +15,37 @@ export class AreaChartComponent implements OnInit {
   public showXAxisLabel;
   public xAxisLabel;
   public yAxisLabel;
-  public gradient;set
+  public gradient;
 
   public single: any[];
   public multi: any[];
   public showLegend = false;
   public colorScheme = {
-      domain: ['#EC407A', '#26C6DA', '#AB47BC']
+    domain: ['#EC407A', '#26C6DA', '#AB47BC']
   };
   public showLabels = false;
   public explodeSlices = false;
   public doughnut = true;
-  public view:any[] = [];
-  public width:number;
+  public view: any[] = [];
+  public width: number;
 
-  
+
   ngDoCheck() {
-    if(this.el.nativeElement.offsetWidth != this.width) {
+    if (this.el.nativeElement.offsetWidth != this.width) {
       this.width = this.el.nativeElement.offsetWidth;
       this.ngOnInit();
     }
   }
 
   ngOnInit() {
-    this.view = [this.el.nativeElement.offsetWidth, 235];    
-    Object.assign(this, {single, multi})   
+    this.view = [this.el.nativeElement.offsetWidth, 235];
+    Object.assign(this, { single, multi })
   }
-  
+
   onSelect(event) {
     console.log(event);
   }
   constructor() { }
 
- 
+
 }

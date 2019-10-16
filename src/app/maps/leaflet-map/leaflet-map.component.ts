@@ -1,25 +1,25 @@
-import { Component, OnInit , ViewChild,ElementRef} from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as L from 'leaflet';
 
 @Component({
-  selector: 'app-leaflet-map',
-  templateUrl: './leaflet-map.component.html',
-  styleUrls: ['./leaflet-map.component.scss']
+	selector: 'app-leaflet-map',
+	templateUrl: './leaflet-map.component.html',
+	styleUrls: ['./leaflet-map.component.scss']
 })
 export class LeafletMapComponent implements OnInit {
-	@ViewChild('mapid') mapElement: ElementRef;
-	@ViewChild('mapContainer') mapContainer: any;
+	@ViewChild('mapid', { static: false }) mapElement: ElementRef;
+	@ViewChild('mapContainer', { static: false }) mapContainer: any;
 	public map: any;
 	height: string = '500px';
 	constructor() {
-	 }
+	}
 
 	ngOnInit() {
 		setTimeout(() => {
 			let h = this.mapContainer.nativeElement.offsetHeight - 10;
 			this.height = String(h) + 'px';
 			this.loadMap();
-		},300);
+		}, 300);
 	}
 	private loadMap() {
 		this.map = L.map('mapid', {

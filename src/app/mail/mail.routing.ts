@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { MailComponent } from './mail/mail.component';
 
 const routes: Routes = [
-  {path: 'mail', component: MailComponent ,data: { animation: 'mail' }}
+  { path: 'mail', component: MailComponent, data: { animation: 'mail' } }
 ];
 
 @NgModule({

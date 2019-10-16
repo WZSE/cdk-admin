@@ -1,10 +1,10 @@
 
-import {merge as observableMerge, BehaviorSubject, Observable} from 'rxjs';
+import { merge as observableMerge, BehaviorSubject, Observable } from 'rxjs';
 
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import {DataSource} from '@angular/cdk/collections';
-import {MatPaginator, MatSort} from '@angular/material';
+import { DataSource } from '@angular/cdk/collections';
+import { MatPaginator, MatSort } from '@angular/material';
 
 
 
@@ -14,7 +14,7 @@ import {MatPaginator, MatSort} from '@angular/material';
 import { UserData } from '../interfaces';
 
 export const TABLE_HELPERS = {
-    allFeaturesTablehtmlsource:  `<div class="example-header" [style.display]="selection.isEmpty() ? '' : 'none'">
+  allFeaturesTablehtmlsource: `<div class="example-header" [style.display]="selection.isEmpty() ? '' : 'none'">
   <mat-form-field floatPlaceholder="never">
     <input matInput #filter placeholder="Filter users">
   </mat-form-field>
@@ -93,7 +93,7 @@ export const TABLE_HELPERS = {
   </mat-paginator>
 </div>
 `.trim(),
-  allFeaturesTabletssource:`import {Component, ElementRef, ViewChild} from '@angular/core';
+  allFeaturesTabletssource: `import {Component, ElementRef, ViewChild} from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {MatPaginator, MatSort} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
@@ -122,7 +122,7 @@ export class TableOverviewExample {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filter') filter: ElementRef;
+  @ViewChild('filter',{static:false}) filter: ElementRef;
 
   ngOnInit() {
     this.dataSource = new ExampleDataSource(this.exampleDatabase, this.paginator, this.sort);
@@ -367,8 +367,8 @@ export class ExampleDatabase {
   /** Builds and returns a new User. */
   private createNewUser() {
     const name =
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-        NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
+      NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
+      NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
 
     return {
       id: (this.data.length + 1).toString(),
@@ -395,8 +395,8 @@ export class ExampleDataSource extends DataSource<any> {
   renderedData: UserData[] = [];
 
   constructor(private _exampleDatabase: ExampleDatabase,
-              private _paginator: MatPaginator,
-              private _sort: MatSort) {
+    private _paginator: MatPaginator,
+    private _sort: MatSort) {
     super();
 
     // Reset to the first page when the user changes the filter.
@@ -430,15 +430,15 @@ export class ExampleDataSource extends DataSource<any> {
     }));
   }
 
-  disconnect() {}
+  disconnect() { }
 
   /** Returns a sorted copy of the database data. */
   sortData(data: UserData[]): UserData[] {
     if (!this._sort.active || this._sort.direction == '') { return data; }
 
     return data.sort((a, b) => {
-      let propertyA: number|string = '';
-      let propertyB: number|string = '';
+      let propertyA: number | string = '';
+      let propertyB: number | string = '';
 
       switch (this._sort.active) {
         case 'userId': [propertyA, propertyB] = [a.id, b.id]; break;
