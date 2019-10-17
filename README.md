@@ -1,11 +1,11 @@
-# CdK Admin - FREE PREMIUM ANGULAR 5 MATERIAL DESIGN+FLEX LAYOUT ADMIN PANEL
+# CDK Admin - Free Premium Angular 8 Material Design + Flex Layout Admin Panel
 
 
-DEMO:https://newproject-5d731.firebaseapp.com
+[DEMO](https://newproject-5d731.firebaseapp.com)
 
-to hire me, email me harikrishna266@gmail.com
+To hire me, email me harikrishna266@gmail.com
 
-for bugs use github issue tracker 
+For bugs use github issue tracker 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
