@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { Routes,RouterModule } from '@angular/router';
- 
-import { AuthModule } from '../auth/auth.module';
+import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [   
-    {path: 'auth', loadChildren: '../auth/auth.module#AuthModule'},
-    {path: 'register', loadChildren: '../register/register.module#RegisterModule'},
-    {path: 'login', loadChildren: '../pages/login/login.module#LoginModule'},
-    // {path: 'editor', loadChildren: '../editor/editor.module#EditorModule'},
-
-    {path: '**', redirectTo: 'auth/dashboard'},
-]
+const routes: Routes = [
+    { path: 'auth', loadChildren: () => import('../auth/auth.module').then(j => j.AuthModule) },
+    { path: 'register', loadChildren: () => import('../register/register.module').then(j => j.RegisterModule) },
+    { path: 'login', loadChildren: () => import('../pages/login/login.module').then(j => j.LoginModule) },
+    { path: 'editor', loadChildren: () => import('../editor/editor.module').then(j => j.EditorModule) },
+    { path: '**', redirectTo: 'auth/dashboard' },
+];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
